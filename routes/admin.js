@@ -4,7 +4,7 @@ const pool = require('../pool.js');
 var router = express.Router();
 
 router.get("/index", (req,res) => {
-  res.send("Holle Word");
+  res.send("后台主页");
 });
 
 

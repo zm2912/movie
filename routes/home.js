@@ -4,7 +4,7 @@ const pool = require('../pool.js');
 var router = express.Router();
 
 router.get("/", (req,res) => {
-  res.send("Holle Word1231");
+  res.send("前台主页");
 });
 
 // 导出路由
