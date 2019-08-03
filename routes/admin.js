@@ -3,8 +3,9 @@ const pool = require('../pool.js');
 // 创建路由器
 var router = express.Router();
 
-router.get("/index", (req,res) => {
-  res.send("后台主页");
+router.get("/admin", function (req,res)  {
+  var dirname = __dirname.slice(0, -7);
+  res.sendFile(dirname + "/public/admin/index.html");
 });
 
 
