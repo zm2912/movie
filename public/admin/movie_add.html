@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../static/admin/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../static/admin/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="../static/admin/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" type="text/css" href="../static/jwplayer/skins/stormtrooper.css">
     <style>
         *{
             font-family:"Microsoft YaHei";
@@ -20,14 +21,17 @@
             vertical-align:middle;
             text-align:center;
         }
+
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <a href="index.html" class="logo">
-            <span class="logo-mini"><img src="../static/base/images/logo.png" style="height:40px;width:40px;">电影系统</span>
-            <span class="logo-lg"><img src="../static/base/images/logo.png" style="height:40px;width:40px;">微电影管理系统</span>
+            <span class="logo-mini"><img src="../static/base/images/logo.png"
+                                         style="height:40px;width:40px;">电影系统</span>
+            <span class="logo-lg"><img src="../static/base/images/logo.png"
+                                       style="height:40px;width:40px;">微电影管理系统</span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -286,8 +290,87 @@
         </section>
     </aside>
     <div class="content-wrapper">
-    <!--内容-->
-    <!--内容-->
+        <!--内容-->
+        <section class="content-header">
+            <h1>微电影管理系统</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 电影管理</a></li>
+                <li class="active">添加电影</li>
+            </ol>
+        </section>
+        <section class="content" id="showcontent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">添加电影</h3>
+                        </div>
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="input_title">片名</label>
+                                    <input type="text" class="form-control" id="input_title" placeholder="请输入片名！">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_url">文件</label>
+                                    <input type="file" id="input_url">
+                                    <div style="margin-top:5px;">
+                                        <div id="moviecontainer"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_info">介绍</label>
+                                    <textarea class="form-control" rows="10" id="input_info"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_logo">封面</label>
+                                    <input type="file" id="input_logo">
+                                    <img data-src="holder.js/262x166" style="margin-top:5px;" class="img-responsive"
+                                         alt="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_star">星级</label>
+                                    <select class="form-control" id="input_star">
+                                        <option value="1">1星</option>
+                                        <option value="2">2星</option>
+                                        <option value="3">3星</option>
+                                        <option value="4">4星</option>
+                                        <option value="5">5星</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_tag_id">标签</label>
+                                    <select class="form-control" id="input_tag_id">
+                                        <option value="1">科幻</option>
+                                        <option value="2">冒险</option>
+                                        <option value="3">爱情</option>
+                                        <option value="4">动作</option>
+                                        <option value="5">战争</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_area">地区</label>
+                                    <input type="text" class="form-control" id="input_area" placeholder="请输入地区！">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_length">片长</label>
+                                    <input type="text" class="form-control" id="input_length" placeholder="请输入片长！">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_release_time">上映时间</label>
+                                    <input type="text" class="form-control" id="input_release_time"
+                                           placeholder="请选择上映时间！">
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--内容-->
     </div>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -306,7 +389,47 @@
 <script src="//cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 <script src="../static/admin/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script src="../static/admin/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+<!--播放页面-->
+<script src="../static/jwplayer/jwplayer.js"></script>
+<script type="text/javascript">
+    jwplayer.key = "P9VTqT/X6TSP4gi/hy1wy23BivBhjdzVjMeOaQ==";
 
+</script>
+<script type="text/javascript">
+    jwplayer("moviecontainer").setup({
+        flashplayer: "../static/jwplayer/jwplayer.flash.swf",
+        playlist: [{
+            file: "../static/video/htpy.mp4",
+            title: "环太平洋"
+        }],
+        modes: [{
+            type: "html5"
+        }, {
+            type: "flash",
+            src: "../static/jwplayer/jwplayer.flash.swf"
+        }, {
+            type: "download"
+        }],
+        skin: {
+            name: "vapor"
+        },
+        "playlist.position": "left",
+        "playlist.size": 200,
+        height: 250,
+        width: 387,
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $('#input_release_time').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+        });
+    });
+
+</script>
 
 </body>
 </html>
