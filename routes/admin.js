@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get("/admin", function (req,res)  {
   var dirname = __dirname.slice(0, -7);
-  res.sendFile(dirname + "/public/admin/index.html");
+  res.sendFile(dirname + "/public/admin/admin.html");
 });
 
 
